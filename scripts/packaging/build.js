@@ -95,7 +95,7 @@ async function main() {
   console.log(`################`);
   const localAssetSubDirs = await fs.promises.readdir(localAssetDir);
   localAssetSubDirs.forEach((subdir) => {
-    const subpath = path.join(workDir, "local-assets", subdir);
+    const subpath = path.join(localAssetDir, subdir);
     execSync(
       `cd ${subpath} && zip -r ${subdir}.zip ./* && cp ${subdir}.zip ${localAssetDir} && cd ${localAssetDir} && rm -rf ${subpath}`
     );

@@ -22,5 +22,9 @@ synth-assets: build-infra
 		--context matanoAwsRegion=us-east-1 \
 		--context matanoContext="{\"vpc\":{\"vpcId\":\"vpc-05175918865d89771\",\"vpcCidrBlock\":\"172.31.0.0/16\",\"availabilityZones\":[\"us-west-2a\"],\"publicSubnetIds\":[\"subnet-0ed3947530beb444e\"],\"publicSubnetNames\":[\"Public\"],\"publicSubnetRouteTableIds\":[\"rtb-0cb5ed9727a71bb7e\"]}}"
 
-package: build-cli synth-assets
-	cd scripts/packaging && npm install pkg@5.8.0 && cd ${CURDIR} && node scripts/packaging/build.js
+package:
+	@echo "==================="
+	@echo ${RUNNER_TEMP}
+	@echo "==================="
+# package: build-cli synth-assets
+# 	cd scripts/packaging && npm install pkg@5.8.0 && cd ${CURDIR} && node scripts/packaging/build.js
