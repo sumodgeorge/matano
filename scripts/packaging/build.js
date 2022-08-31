@@ -90,6 +90,9 @@ async function main() {
 
   execSync(`cp -a ${projDir}/local-assets ${workDir}`);
   const localAssetDir = path.join(workDir, "local-assets");
+  console.log(`################`);
+  execSync(`ls ${localAssetDir}`);
+  console.log(`################`);
   const localAssetSubDirs = await fs.promises.readdir(localAssetDir);
   localAssetSubDirs.forEach((subdir) => {
     const subpath = path.join(workDir, "local-assets", subdir);
