@@ -91,9 +91,10 @@ export class RustFunctionCode {
                         "-c",
                         [
                             // `mkdir -p /.cache`,
-                            `ts-node -T -e "import { build } from './scripts/build'; build(JSON.parse(Buffer.from('${Buffer.from(JSON.stringify(baseBuildProps)).toString('base64')}', 'base64').toString('ascii')));"`,
-                            `cp -a /asset-output/${packageName}/* /asset-output`,
-                            `rm -rf /asset-output/${packageName}`,
+                            // `ts-node -T -e "import { build } from './scripts/build'; build(JSON.parse(Buffer.from('${Buffer.from(JSON.stringify(baseBuildProps)).toString('base64')}', 'base64').toString('ascii')));"`,
+                            // `cp -a /asset-output/${packageName}/* /asset-output`,
+                            // `rm -rf /asset-output/${packageName}`,
+                            `cp -a /asset-input/* /asset-output`,
                             `cp -a /asset-output/* /local-assets/${packageName}`,
                         ].join(" && "),
                     ],
