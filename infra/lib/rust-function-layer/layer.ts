@@ -95,6 +95,7 @@ export class RustFunctionCode {
                             // `cp -a /asset-output/${packageName}/* /asset-output`,
                             // `rm -rf /asset-output/${packageName}`,
                             `cp -a /asset-input/* /asset-output`,
+                            `mkdir -p /local-assets/${packageName}`,
                             `cp -a /asset-output/* /local-assets/${packageName}`,
                         ].join(" && "),
                     ],
