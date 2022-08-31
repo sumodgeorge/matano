@@ -74,6 +74,27 @@ function getMSHelp(archiveName) {
 }
 
 async function main() {
+
+  execSync(`cp -a ${projDir}/local-assets ${workDir}`);
+  execSync(`ls ${projDir}/local-assets`);
+  console.log("-------------");
+  const localAssetDir = path.join(workDir, "local-assets");
+  console.log(`################`);
+  execSync(`ls ${localAssetDir}`);
+  console.log(`################`);
+  const localAssetSubDirs = await fs.promises.readdir(localAssetDir);
+  console.log(localAssetSubDirs);
+  execSync(`ls ${localAssetDir}`);
+  localAssetSubDirs.forEach((subdir) => {
+    const subpath = path.join(localAssetDir, subdir);
+    console.log(`ASSET FOR: ${subpath}`);
+    execSync(
+      `zip -r ${subdir}.zip ./* && cp ${subdir}.zip ${localAssetDir} && cd ${localAssetDir} && rm -rf ${subpath}`, {
+        cwd: subpath,
+      }
+    );
+  });
+
   // await exec(["--no-bytecode", "--public", "--public-packages", "*", "-o", "build/matano-cdk", "-c", path.join(projDir, "infra.pkg.json"), path.resolve(projDir, "infra/dist/bin/app.js",)]);
   await exec(["--no-bytecode", "--public", "--public-packages", "*", path.resolve(projDir, "infra")]);
   await exec(["--no-bytecode", "--public", "--public-packages", "*", path.resolve(projDir, "cli")]);
@@ -88,22 +109,6 @@ async function main() {
     cdkPkgConfigPath,
     "node_modules/aws-cdk/bin/cdk",
   ]);
-
-  execSync(`cp -a ${projDir}/local-assets ${workDir}`);
-  const localAssetDir = path.join(workDir, "local-assets");
-  console.log(`################`);
-  execSync(`ls ${localAssetDir}`);
-  console.log(`################`);
-  const localAssetSubDirs = await fs.promises.readdir(localAssetDir);
-  console.log(localAssetSubDirs);
-  localAssetSubDirs.forEach((subdir) => {
-    const subpath = path.join(localAssetDir, subdir);
-    execSync(
-      `zip -r ${subdir}.zip ./* && cp ${subdir}.zip ${localAssetDir} && cd ${localAssetDir} && rm -rf ${subpath}`, {
-        cwd: subpath,
-      }
-    );
-  });
 
   process.chdir(workDir);
   const makeself = installMakeself();
