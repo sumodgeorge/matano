@@ -1,4 +1,4 @@
-aiobotocore==2.4.0
+aiobotocore==2.9.1
 nest_asyncio==1.5.6
 jsonlines==3.0.0
 fastavro[snappy]==1.6.0
@@ -6,3 +6,5 @@ pyston-lite==2.3.5
 pyyaml==6.0
 typing-extensions==4.4.0
 polars==0.15.2
+aiohttp>=3.9.4 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
