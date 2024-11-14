@@ -21,10 +21,10 @@
   ],
   "dependencies": {
     "@aws-cdk/cx-api": "*",
-    "@oclif/core": "^1.9.5",
+    "@oclif/core": "^4.0.0",
     "@oclif/plugin-autocomplete": "*",
     "@oclif/plugin-help": "^5",
-    "@oclif/plugin-plugins": "^2.0.1",
+    "@oclif/plugin-plugins": "^5.2.2",
     "ansi-styles": "^5",
     "aws-cdk": "^2.56",
     "aws-sdk": "^2.1093",
